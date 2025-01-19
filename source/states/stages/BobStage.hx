@@ -1,6 +1,6 @@
 package states.stages;
 
-import backend.Song;
+import Song;
 import states.stages.objects.*;
 import flixel.addons.effects.chainable.FlxGlitchEffect;
 import substates.GameOverSubstate;
