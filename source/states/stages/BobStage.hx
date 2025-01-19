@@ -1,6 +1,12 @@
 package states.stages;
 
 import Song.*;
+import flixel.FlxObject;
+import flixel.FlxState;
+import flixel.addons.display.FlxGridOverlay;
+import flixel.group.FlxGroup.FlxTypedGroup;
+import flixel.text.FlxText;
+import flixel.util.FlxColor;
 import states.stages.objects.*;
 import flixel.addons.effects.chainable.FlxGlitchEffect;
 import substates.GameOverSubstate;
@@ -10,7 +16,13 @@ import openfl.Lib;
 import PlayState.*;
 
 class BobStage extends BaseStage
-{	
+{
+	var prevCamFollow:FlxObject;
+	var isStoryMode:Bool = false;
+	var storyWeek:Int = 0;
+	var curSong:String = "";
+	var songScore:Int = 0;
+	var songScoreDef:Int = 0;
 	var offsetTesting:Bool = false;
 	var offsetTest:Float = 0;
 	var health:Float = 1;
