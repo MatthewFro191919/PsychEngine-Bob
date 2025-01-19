@@ -1,0 +1,56 @@
+{
+	"animations": [
+		{
+			"offsets": [
+				287,
+				79
+			],
+			"indices": [],
+			"fps": 24,
+			"anim": "firstDeath",
+			"loop": false,
+			"name": "BF idle dance"
+		},
+		{
+			"offsets": [
+				287,
+				79
+			],
+			"indices": [44],
+			"fps": 24,
+			"anim": "deathLoop",
+			"loop": true,
+			"name": "BF idle dance"
+		},
+		{
+			"offsets": [
+				287,
+				79
+			],
+			"indices": [44],
+			"fps": 24,
+			"anim": "deathConfirm",
+			"loop": false,
+			"name": "BF idle dance"
+		}
+	],
+	"no_antialiasing": true,
+	"image": "bob/BfSpiked",
+	"position": [
+		0,
+		0
+	],
+	"healthicon": "face",
+	"flip_x": true,
+	"healthbar_colors": [
+		161,
+		161,
+		161
+	],
+	"camera_position": [
+		0,
+		0
+	],
+	"sing_duration": 4.00000000000001,
+	"scale": 1
+}
