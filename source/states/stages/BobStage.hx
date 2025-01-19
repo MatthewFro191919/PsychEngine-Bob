@@ -7,7 +7,6 @@ import substates.GameOverSubstate;
 import cutscenes.DialogueBox;
 import states.FreeplayState;
 import openfl.Lib;
-import PlayState.SONG;
 import PlayState.*;
 
 class BobStage extends BaseStage
@@ -25,6 +24,7 @@ class BobStage extends BaseStage
 	var campaignScore:Int = 0;
 	var storyPlaylist:Array<String> = [];
 	var storyDifficulty:Int = 1;
+	var SONG:SwagSong;
 
 	override function create()
 	{
@@ -279,6 +279,64 @@ class BobStage extends BaseStage
 			resetBobismad();
 		});
 	}
+	function BobIngameTransform()
+	{
+		//screw you aether i want to fix the ingame cutscene
+		dad.playAnim('Transform', true);
+		FlxG.sound.play(Paths.sound('bobSpooky'));
+		var black:FlxSprite = new FlxSprite(-100, -100).makeGraphic(FlxG.width * 2, FlxG.height * 2, FlxColor.BLACK);
+		black.scrollFactor.set();
+		new FlxTimer().start(1.7, function(tmr:FlxTimer)
+		{
+			add(black);
+			FlxG.camera.fade(FlxColor.WHITE, 0.1, true);
+		});
+
+	}
+	function spotifyad()
+		{
+			var thx:FlxSprite = new FlxSprite(0, 0).loadGraphic(Paths.image('littleman/spotifyad'));
+			thx.updateHitbox();
+			thx.scrollFactor.set(0, 0);
+			thx.antialiasing = true;
+			FlxG.camera.fade(FlxColor.BLACK, 1, false, function()
+			{
+				add(thx);
+				FlxG.camera.fade(FlxColor.BLACK, 1, true);
+			}, true);
+		}
+	function WindowGoBack()
+		{
+			new FlxTimer().start(0.01, function(tmr:FlxTimer)
+			{
+				var xLerp:Float = FlxMath.lerp(windowX, Lib.application.window.x, 0.95);
+				var yLerp:Float = FlxMath.lerp(windowY, Lib.application.window.y, 0.95);
+				Lib.application.window.move(Std.int(xLerp),Std.int(yLerp));
+			}, 20);
+		}
+	function changeDadCharacter(id:String)
+		{				
+			var olddadx = dad.x;
+			var olddady = dad.y;
+			remove(dad);
+			dad = new Character(olddadx, olddady, id);
+			add(dad);
+			iconP2.animation.play(id);
+		}
+	/*function loadFileAsString() 
+	{
+		var bruh:FlxSprite = new FlxSprite(FlxG.random.int(0, 775), FlxG.random.int(0, 442));
+			bruh.loadGraphic(Paths.image('bob/Screen_Sky' + FlxG.random.int(1,3), 'shared'));
+			bruh.antialiasing = true;
+			bruh.active = false;
+			bruh.width = bruh.width -50;
+			bruh.scrollFactor.set();
+			bruh.screenCenter();
+			bruh.alpha = bruh.alpha -50;
+		add(bruh);
+		FlxTween.tween(bruh, {width: bruh.width + 50, alpha: bruh.alpha + 50}, 0.1, {ease: FlxEase.sineOut});
+		bruh.cameras = [camHUD];
+        }*/
 
 	var doof:DialogueBox = null;
 	function initDoof()
