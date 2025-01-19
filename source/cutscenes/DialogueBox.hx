@@ -25,8 +25,6 @@ class DialogueBox extends FlxSpriteGroup
 	var skipText:FlxText;
 
 	var dialogue:Alphabet;
-	var dialogueList:Array<String> = [];
-
 	// SECOND DIALOGUE FOR THE PIXEL SHIT INSTEAD???
 	var dropText:FlxText;
 
