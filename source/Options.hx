@@ -1,7 +1,7 @@
 package;
 
 import flixel.util.FlxColor;
-import Controls.KeyboardScheme;
+import bob.Controls.KeyboardScheme;
 import flixel.FlxG;
 import openfl.display.FPS;
 import openfl.Lib;
