@@ -2,7 +2,7 @@ package;
 
 import openfl.Lib;
 import Options;
-import bob.Controls.Control;
+import Controls.Control;
 import flash.text.TextField;
 import flixel.FlxG;
 import flixel.FlxSprite;

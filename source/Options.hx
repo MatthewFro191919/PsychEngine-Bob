@@ -1,7 +1,7 @@
 package;
 
 import flixel.util.FlxColor;
-import bob.Controls.KeyboardScheme;
+import Controls.KeyboardScheme;
 import flixel.FlxG;
 import openfl.display.FPS;
 import openfl.Lib;
@@ -539,5 +539,6 @@ class OffsetMenu extends Option
 		return "Time your offset";
 	}
 }
+
 
 
