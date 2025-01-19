@@ -7,6 +7,8 @@ import substates.GameOverSubstate;
 import cutscenes.DialogueBox;
 import states.FreeplayState;
 import openfl.Lib;
+import PlayState.SONG;
+import PlayState.*;
 
 class BobStage extends BaseStage
 {	
