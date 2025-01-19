@@ -17,6 +17,18 @@ import backend.StageData;
 
 class StoryMenuState extends MusicBeatState
 {
+	public static var weekUnlocked:Array<Bool> = [true, true];
+	
+	var weekData:Array<Dynamic> = [
+		['Sunshine', 'Withered', 'run'],
+		['Ron', 'Trouble', 'Onslaught']
+	];
+
+	var weekCharacters:Array<Dynamic> = [
+		['bob', 'bf', 'gf'],
+		['bob', 'bf', 'gf']
+	];
+
 	public static var weekCompleted:Map<String, Bool> = new Map<String, Bool>();
 
 	var scoreText:FlxText;
@@ -32,14 +44,32 @@ class StoryMenuState extends MusicBeatState
 	var txtTracklist:FlxText;
 
 	var grpWeekText:FlxTypedGroup<MenuItem>;
-	var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
 
 	var grpLocks:FlxTypedGroup<FlxSprite>;
 
-	var difficultySelectors:FlxGroup;
-	var sprDifficulty:FlxSprite;
-	var leftArrow:FlxSprite;
-	var rightArrow:FlxSprite;
+	var grpWeekCharacters:FlxTypedGroup<MenuCharacter>;
+
+	var grpLocks:FlxTypedGroup<FlxSprite>;
+	var bgBack:FlxSprite;
+	var bgFront:FlxSprite;
+	var Week1:FlxSprite;
+	var Week2:FlxSprite;
+	var mainthingidk:FlxSprite;
+
+	var difficultySelectors_1:FlxGroup;
+	var sprDifficulty_1:FlxSprite;
+	var leftArrow_1:FlxSprite;
+	var rightArrow_1:FlxSprite;
+
+	var difficultySelectors_2:FlxGroup;
+	var sprDifficulty_2:FlxSprite;
+	var leftArrow_2:FlxSprite;
+	var rightArrow_2:FlxSprite;
+
+	var bobWeekIndicator:FlxSprite;
+	var bobOnslaughtIndicator:FlxSprite;
+
+	var choose:FlxSprite;
 
 	var loadedWeeks:Array<WeekData> = [];
 
@@ -56,6 +86,27 @@ class StoryMenuState extends MusicBeatState
 		// Updating Discord Rich Presence
 		DiscordClient.changePresence("In the Menus", null);
 		#end
+
+		bgBack = new FlxSprite( -21.4, -1.2).loadGraphic(Paths.image('bob/Sky_Bob', 'shared'));
+		bgFront = new FlxSprite(0, 37.2).loadGraphic(Paths.image('bob/Screen_Sky', 'shared'));
+		Week1 = new FlxSprite(538.55,-26.45);
+		Week1.frames = Paths.getSparrowAtlas('bob/BobSelectScreen', 'shared');
+		Week1.animation.addByPrefix('idle', 'Bob Onslaught', 24, true);
+		Week1.antialiasing = true;
+		Week2 = new FlxSprite(-55.5, 61.4);
+		Week2.frames = Paths.getSparrowAtlas('bob/BobSelectScreen', 'shared');
+		Week2.animation.addByPrefix('idle', 'Bob Week', 24, true);
+		Week2.antialiasing = true;
+		mainthingidk = new FlxSprite(0, 0).loadGraphic(Paths.image('bob/SelectScreen_Bob', 'shared'));
+		add(bgBack);
+		add(bgFront);
+		add(Week1);
+		add(Week2);
+		Week1.animation.play('idle');
+		Week2.animation.play('idle');
+		add(mainthingidk);
+		moveBg();
+		trace("Line 70");
 
 		if(WeekData.weeksList.length < 1)
 		{
@@ -195,7 +246,90 @@ class StoryMenuState extends MusicBeatState
 	}
 
 	override function update(elapsed:Float)
-	{
+	{	
+		// scoreText.setFormat('VCR OSD Mono', 32);
+		lerpScore = Math.floor(FlxMath.lerp(lerpScore, intendedScore, 0.5));
+
+		scoreText.text = "WEEK SCORE:" + lerpScore;
+
+		// FlxG.watch.addQuick('font', scoreText.font);
+
+		difficultySelectors_1.visible = weekUnlocked[curWeek];
+		difficultySelectors_2.visible = weekUnlocked[curWeek];
+
+		grpLocks.forEach(function(lock:FlxSprite)
+		{
+			lock.y = grpWeekText.members[lock.ID].y;
+		});
+		if (curWeek == 0)
+		{
+			Week1.visible = false;
+			Week2.visible = true;
+		}
+		else
+		{
+			Week1.visible = true;
+			Week2.visible = false;
+		}
+
+		if (!movedBack)
+		{
+			if (!selectedWeek)
+			{
+				if (controls.UI_UP_P)
+				{
+					changeWeek(-1);
+				}
+
+				if (controls.UI_DOWN_P)
+				{
+					changeWeek(1);
+				}
+
+				if (controls.RIGHT) {
+					if (curWeek == 0)
+						rightArrow_1.animation.play('press');
+					else
+						rightArrow_1.animation.play('idle');
+
+					if (curWeek == 1)
+						rightArrow_2.animation.play('press');
+					else
+						rightArrow_2.animation.play('idle');
+					}
+				else {
+					rightArrow_1.animation.play('idle');
+					rightArrow_2.animation.play('idle');
+				}
+
+				if (controls.LEFT) {
+					if (curWeek == 0)
+						leftArrow_1.animation.play('press');
+					else
+						leftArrow_1.animation.play('idle');
+
+					if (curWeek == 1)
+						leftArrow_2.animation.play('press');
+					else
+						leftArrow_2.animation.play('idle');
+				}
+				else {
+						leftArrow_1.animation.play('idle');
+						leftArrow_2.animation.play('idle');
+				}
+
+				if (controls.UI_RIGHT_P)
+					changeDifficulty(1);
+				if (controls.UI_LEFT_P)
+					changeDifficulty(-1);
+			}
+
+			if (controls.ACCEPT)
+			{
+				selectWeek();
+			}
+		}
+
 		if(WeekData.weeksList.length < 1)
 		{
 			if (controls.BACK && !movedBack && !selectedWeek)
