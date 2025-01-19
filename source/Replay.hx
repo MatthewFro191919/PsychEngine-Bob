@@ -1,7 +1,7 @@
 #if sys
 import sys.io.File;
 #end
-import backend.Controls.Control;
+import Controls.Control;
 import flixel.FlxG;
 import openfl.events.IOErrorEvent;
 import openfl.events.Event;
