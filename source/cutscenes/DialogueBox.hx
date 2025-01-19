@@ -28,18 +28,13 @@ class DialogueBox extends FlxSpriteGroup
 	var dialogueList:Array<String> = [];
 
 	// SECOND DIALOGUE FOR THE PIXEL SHIT INSTEAD???
-	var swagDialogue:FlxTypeText;
 	var dropText:FlxText;
 
 	var caniskip:Bool = true;
 
-	public var finishThing:Void->Void;
-
 	var portraitGloop:FlxSprite;
 	var portraitRightBF:FlxSprite;
 	var portraitRightGF:FlxSprite;
-
-	var bgFade:FlxSprite;
 
 	var BOOM:FlxSound;
 
