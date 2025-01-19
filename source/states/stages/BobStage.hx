@@ -13,7 +13,6 @@ class BobStage extends BaseStage
 	var health:Float = 1;
 	var strumLineNotes:FlxTypedGroup<FlxSprite>;
 	var playerStrums:FlxTypedGroup<FlxSprite>;
-	var rep:Replay;
 	var loadRep:Bool = false;
         var vocals:FlxSound;
         var bobmadshake:FlxSprite;
