@@ -1,6 +1,6 @@
 package states.stages;
 
-import Song.*;
+import Song.SwagSong;
 import flixel.FlxObject;
 import flixel.FlxState;
 import flixel.addons.display.FlxGridOverlay;
@@ -18,7 +18,6 @@ import states.PlayState.*;
 class BobStage extends BaseStage
 {
 	var prevCamFollow:FlxObject;
-	var isStoryMode:Bool = false;
 	var storyWeek:Int = 0;
 	var curSong:String = "";
 	var songScore:Int = 0;
