@@ -10,6 +10,7 @@ import openfl.Lib;
 
 class BobStage extends BaseStage
 {	
+	var offsetTesting:Bool = false;
 	var health:Float = 1;
 	var strumLineNotes:FlxTypedGroup<FlxSprite>;
 	var playerStrums:FlxTypedGroup<FlxSprite>;
