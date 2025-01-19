@@ -24,6 +24,7 @@ class BobStage extends BaseStage
         var bobsound:FlxSound;
 	var campaignScore:Int = 0;
 	var storyPlaylist:Array<String> = [];
+	var storyDifficulty:Int = 1;
 
 	override function create()
 	{
