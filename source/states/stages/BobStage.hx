@@ -319,7 +319,7 @@ class BobStage extends BaseStage
 		doof.skipDialogueThing = PlayState.instance.skipDialogue;
 	}
 
-	override function endSong():Void
+	override function endSong()
 	{
 		if (!loadRep)
 			rep.SaveReplay();
