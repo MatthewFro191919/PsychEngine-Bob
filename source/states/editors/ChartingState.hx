@@ -587,7 +587,7 @@ class ChartingState extends MusicBeatState implements PsychUIEventHandler.PsychU
 			needsVoices: true,
 			speed: 1,
 			offset: 0,
-
+		        validScore: false,
 			player1: 'bf',
 			player2: 'dad',
 			gfVersion: 'gf',
