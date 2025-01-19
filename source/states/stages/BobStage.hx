@@ -10,7 +10,8 @@ import openfl.Lib;
 
 class BobStage extends BaseStage
 {	
-	var offsetTesting:Bool = false;
+	var offsetTesting:Bool = false;;
+	var offsetTest:Float = 0;
 	var health:Float = 1;
 	var strumLineNotes:FlxTypedGroup<FlxSprite>;
 	var playerStrums:FlxTypedGroup<FlxSprite>;
@@ -19,6 +20,8 @@ class BobStage extends BaseStage
         var vocals:FlxSound;
         var bobmadshake:FlxSprite;
         var bobsound:FlxSound;
+	var campaignScore:Int = 0;
+	var storyPlaylist:Array<String> = [];
 
 	override function create()
 	{
