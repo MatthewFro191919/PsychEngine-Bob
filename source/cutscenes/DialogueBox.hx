@@ -24,6 +24,25 @@ class DialogueBox extends FlxSpriteGroup
 	var bgFade:FlxSprite;
 	var skipText:FlxText;
 
+	var dialogue:Alphabet;
+	var dialogueList:Array<String> = [];
+
+	// SECOND DIALOGUE FOR THE PIXEL SHIT INSTEAD???
+	var swagDialogue:FlxTypeText;
+	var dropText:FlxText;
+
+	var caniskip:Bool = true;
+
+	public var finishThing:Void->Void;
+
+	var portraitGloop:FlxSprite;
+	var portraitRightBF:FlxSprite;
+	var portraitRightGF:FlxSprite;
+
+	var bgFade:FlxSprite;
+
+	var BOOM:FlxSound;
+
 	var songName:String = Paths.formatToSongPath(Song.loadedSongName);
 	public function new(talkingRight:Bool = true, ?dialogueList:Array<String>)
 	{
