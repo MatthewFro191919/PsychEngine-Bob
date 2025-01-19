@@ -20,6 +20,7 @@ typedef SwagSong =
 	var gfVersion:String;
 	var stage:String;
 	var format:String;
+	var validScore:Bool;
 
 	@:optional var gameOverChar:String;
 	@:optional var gameOverSound:String;
@@ -178,5 +179,12 @@ class Song
 			}
 		}
 		return songJson;
+	}
+
+	public static function parseJSONshit(rawJson:String):SwagSong
+	{
+		var swagShit:SwagSong = cast Json.parse(rawJson).song;
+		swagShit.validScore = true;
+		return swagShit;
 	}
 }
