@@ -13,6 +13,7 @@ import flixel.tweens.FlxTween;
 import flixel.util.FlxColor;
 import flixel.util.FlxTimer;
 import lime.net.curl.CURLCode;
+import Controls;
 
 #if windows
 import Discord.DiscordClient;
