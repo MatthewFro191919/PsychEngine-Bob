@@ -259,7 +259,8 @@ class VSlice
 				player2: metadata.playData.characters.opponent,
 				gfVersion: metadata.playData.characters.girlfriend,
 				stage: stage,
-				format: 'psych_v1_convert'
+				format: 'psych_v1_convert',
+				validScore: false
 			}
 
 			Reflect.setField(swagSong, 'artist', metadata.artist);
