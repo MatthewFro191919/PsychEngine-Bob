@@ -7,6 +7,8 @@ class Mall extends BaseStage
 	var upperBoppers:BGSprite;
 	var bottomBoppers:MallCrowd;
 	var santa:BGSprite;
+        
+	function endSong() if(onPlayState)return PlayState.instance.endSong(); else return false;
 
 	override function create()
 	{
