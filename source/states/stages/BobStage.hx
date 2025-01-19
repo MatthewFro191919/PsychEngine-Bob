@@ -1,15 +1,23 @@
 package states.stages;
 
+import backend.Song;
 import states.stages.objects.*;
 import flixel.addons.effects.chainable.FlxGlitchEffect;
 import substates.GameOverSubstate;
 import cutscenes.DialogueBox;
 import states.FreeplayState;
+import openfl.Lib;
 
 class BobStage extends BaseStage
 {	
-  var bobmadshake:FlxSprite;
-	var bobsound:FlxSound;
+	var health:Float = 1;
+	var strumLineNotes:FlxTypedGroup<FlxSprite>;
+	var playerStrums:FlxTypedGroup<FlxSprite>;
+	var rep:Replay;
+	var loadRep:Bool = false;
+        var vocals:FlxSound;
+        var bobmadshake:FlxSprite;
+        var bobsound:FlxSound;
 
 	override function create()
 	{
@@ -312,7 +320,7 @@ class BobStage extends BaseStage
 		doof.skipDialogueThing = PlayState.instance.skipDialogue;
 	}
 
-	function endSong():Void
+	override function endSong():Void
 	{
 		if (!loadRep)
 			rep.SaveReplay();
