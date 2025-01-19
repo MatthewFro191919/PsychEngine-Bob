@@ -483,7 +483,7 @@ class BobStage extends BaseStage
 
 					var tempSong:String = SONG.song.toLowerCase();
 
-					PlayState.SONG = Song.loadFromJson(PlayState.storyPlaylist[0].toLowerCase() + difficulty, PlayState.storyPlaylist[0]);
+					SONG = Song.loadFromJson(storyPlaylist[0].toLowerCase() + difficulty, storyPlaylist[0]);
 					FlxG.sound.music.stop();
 
 					if (tempSong == 'ron') 
